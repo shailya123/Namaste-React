@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { resData } from "../utils/mockData";
+import Shimmer from "./Shimmer";
 const Body = () => {
 
-  const [listofRes, setListOfRes] = useState(resData);
+  const [listofRes, setListOfRes] = useState([]);
+  const [originalListofRes, setOriginalListofRes] = useState([]);
+  const [searchText, setSearchText] = useState('');
   const filterTopRes = () => {
     setListOfRes(resData.filter((res) => res.rating >= 4))
   }
@@ -13,19 +16,30 @@ const Body = () => {
   }, [])
 
   const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",{
-    mode:'no-cors'
-    }
+    const data = await fetch("https://random-data-api.com/api/restaurant/random_restaurant?size=10"
     );
     const json = await data.json();
-    console.log(json);
+    setListOfRes(json);
+    setOriginalListofRes(json)
   }
+
+  const searchByName=()=>{
+    const list= originalListofRes.filter((x)=>x.name.toLowerCase().includes(searchText.toLowerCase()));
+    setListOfRes(list);
+  }
+  
+    if (listofRes?.length === 0) {
+      return <Shimmer />
+    }
 
   return (
     <div className="body">
       <div className="search">
-        <span>Search</span>
+        <div style={{display:"flex", gap:6}}>
+          <input type="text" placeholder="search..." value={searchText} onChange={(e)=>setSearchText(e.target.value)} />
+          <button onClick={searchByName}>Search</button>
         <button className="filter-btn" onClick={filterTopRes}>Top Restaurant</button>
+        </div>
       </div>
       <div className="res-container">
         {
