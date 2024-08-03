@@ -8,6 +8,7 @@
   justify-content: space-between;
   border: 1px solid black;
   align-items: center;
+  background-color:aqua;
 }
 
 .nav-items {
@@ -23,17 +24,21 @@
 .nav-items > ul > li {
   padding: 10px;
   margin: 10px;
+  text-decoration: none;
+  color: black;
 }
+
 
 .nav-items > ul > li:hover {
   color: blue;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .res-card {
   padding: 5px;
   margin: 10px;
-  width: 200px;
+  width: 250px;
   height: 350px;
   border: 1px solid azure;
   background-color: azure;
@@ -72,6 +77,8 @@
   margin: 10px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .shimmer-container {
