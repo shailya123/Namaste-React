@@ -9,7 +9,7 @@ console.log(cloudinaryImageId);
       <h3>{name}</h3>
       <div className="card-items">
         <h4> {cuisines.join(',')}</h4>
-        <h4>{avgRating}</h4>
+        <h4>{+avgRating}</h4>
         <h4>{costForTwo}</h4>
       </div>
     </div>

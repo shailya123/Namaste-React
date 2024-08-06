@@ -8,13 +8,15 @@ const Body = () => {
   const [listofRes, setListOfRes] = useState([]);
   const [originalListofRes, setOriginalListofRes] = useState([]);
   const [searchText, setSearchText] = useState('');
-  const filterTopRes = () => {
-    setListOfRes(resData.filter((res) => res.info.avgRating >= 4))
-  }
 
   useEffect(() => {
     fetchData();
   }, [])
+
+  const filterTopRes = () => {
+    setListOfRes(resData.filter((res) => +res.info.avgRating >= 4.5))
+  }
+
 
   const fetchData = async () => {
     const data1 = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
