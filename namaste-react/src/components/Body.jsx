@@ -3,15 +3,19 @@ import RestaurantCard from "./RestaurantCard";
 import { resData } from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useInternetStatus from "../hooks/useInternetStatus";
+
 const Body = () => {
 
   const [listofRes, setListOfRes] = useState([]);
   const [originalListofRes, setOriginalListofRes] = useState([]);
   const [searchText, setSearchText] = useState('');
 
+  const isOnline = useInternetStatus();
   useEffect(() => {
     fetchData();
   }, [])
+
 
   const filterTopRes = () => {
     setListOfRes(resData.filter((res) => +res.info.avgRating >= 4.5))
@@ -34,7 +38,7 @@ const Body = () => {
     return <Shimmer />
   }
 
-  return (
+  return (!isOnline ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><h1>You are offline!! please check your internet connection</h1></div> :
     <div className="body">
       <div className="search">
         <div style={{ display: "flex", gap: 6 }}>
@@ -45,7 +49,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {
-          listofRes?.map((res) => <Link to={`/restaurants/${res.info.id}`} key={res.info.id} ><RestaurantCard resData={res} /></Link> )
+          listofRes?.map((res) => <Link to={`/restaurants/${res.info.id}`} key={res.info.id} ><RestaurantCard resData={res} /></Link>)
         }
       </div>
     </div>
