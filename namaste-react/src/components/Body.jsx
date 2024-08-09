@@ -40,14 +40,16 @@ const Body = () => {
 
   return (!isOnline ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><h1>You are offline!! please check your internet connection</h1></div> :
     <div className="body">
-      <div className="search">
-        <div style={{ display: "flex", gap: 6 }}>
-          <input type="text" placeholder="search..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-          <button onClick={searchByName}>Search</button>
-          <button className="filter-btn" onClick={filterTopRes}>Top Restaurant</button>
+      <div className="search m-4 p-4">
+        <div className="flex gap-4">
+          <input className="rounded-lg border border-solid border-black" type="text" placeholder="search..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+          <div className="flex gap-4">
+            <button onClick={searchByName} className="px-2 bg-green-100 py-1 rounded-lg hover:shadow-lg hover:bg-green-400">Search</button>
+            <button className="px-2 bg-gray-100 py-1 rounded-lg hover:shadow-lg hover:bg-gray-400" onClick={filterTopRes}>Top Restaurant</button>
+          </div>
         </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap gap-4 p-4">
         {
           listofRes?.map((res) => <Link to={`/restaurants/${res.info.id}`} key={res.info.id} ><RestaurantCard resData={res} /></Link>)
         }
