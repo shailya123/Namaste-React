@@ -15,14 +15,14 @@ const Header = () => {
           <img className='w-28' src={LOGO_URL} style={{ mixBlendMode: 'darken' }} />
         </Link>
       </div>
-      <div className='p-2 flex items-center'>
-        <ul className='flex gap-10 text-lg'>
-          <li className={`${isOnline ? 'bg-green-500 rounded-full' : 'bg-red-500 '} self-center rounded-full h-5 w-5`} />
+      <div className='p-8 flex items-center'>
+        <ul className='flex gap-10 text-lg uppercase font-semibold'>
+          <li className={`${isOnline ? 'bg-green-500 rounded-full' : 'bg-red-500 '} self-center rounded-full h-5 w-5 gap-2`}/>
           <li className={`${(pathname.pathname === '/' || pathname.pathname.includes('/restaurants/')) ? 'font-bold' : 'font-normal'} hover:font-bold`}><Link to='/'>Home</Link></li>
           <li className={`${pathname.pathname === '/About' ? 'font-bold' : 'font-normal'} hover:font-bold`}> <Link to='/About'>About</Link></li>
           <li className={`${pathname.pathname === '/Contact' ? 'font-bold' : 'font-normal'} hover:font-bold`}><Link to='Contact'>Contact Us</Link></li>
           <li className={`${pathname.pathname === '/Grocery' ? 'font-bold' : 'font-normal'} hover:font-bold`}><Link to='grocery'>Grocery</Link></li>
-          <li>Cart</li>
+          <li className={`${pathname.pathname === '/Grocery' ? 'font-bold' : 'font-normal'} hover:font-bold`}><Link to='grocery'>Cart</Link></li>
         </ul>
       </div>
     </div>

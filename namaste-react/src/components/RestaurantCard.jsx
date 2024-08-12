@@ -1,4 +1,5 @@
 import React from 'react'
+import { GoStarFill } from "react-icons/go";
 import { CDN_URL } from '../utils/contants';
 
 const RestaurantCard = ({ resData }) => {
@@ -11,7 +12,7 @@ const RestaurantCard = ({ resData }) => {
       <h3 className='font-bold self-center'>{name}</h3>
       <div className="flex gap-2 flex-col justify-center items-center">
         <p className='flex flex-wrap w-52'> {cuisines.join(',')}</p>
-        <h4>{+avgRating}</h4>
+        <h4 className='flex gap-1'><GoStarFill size={20} color='yellow'/>{' '}{+avgRating}</h4>
         <h4 className='font-bold'>{costForTwo}</h4>
       </div>
     </div>

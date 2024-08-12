@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaGithub } from "react-icons/fa";
 class UserClass extends React.Component {
     constructor() {
         super();
@@ -22,12 +23,12 @@ class UserClass extends React.Component {
 
     render() {
         return (
-            <div className='p-8 shadow-xl flex justify-around items-center'>
+            <div className='p-8 shadow-xl flex justify-around items-center h-[40rem]'>
                 <img src={this.state.userData?.avatar_url} className='h-36 w-36 rounded-full shadow-md' />
-                <div className='flex flex-col font-semibold'>
+                <div className='flex flex-col font-semibold gap-2'>
                     <h2>Name:{this.state.userData?.name}</h2>
                     <h2>Location: {this.state.userData?.location}</h2>
-                    <Link to={this.state.userData?.html_url} target='_blank' className='text-green-300'>GitHub</Link>
+                    <Link to={this.state.userData?.html_url} target='_blank' className='text-green-300'><FaGithub size={30}/></Link>
                 </div>
             </div>
         );
