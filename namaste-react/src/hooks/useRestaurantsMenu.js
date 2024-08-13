@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { MENU_API } from '../utils/contants';
+import { MENU_API, TYPE_MENU } from '../utils/contants';
 
 const useRestaurantsMenu = (resId) => {
 
     const [resInfo, setResInfo] = useState(null);
     const [menu, setMenu] = useState([]);
+    const [category, setCatagory] = useState([]);
     useEffect(() => {
         fetchMenu();
     }, [])
@@ -14,8 +15,9 @@ const useRestaurantsMenu = (resId) => {
         const json = await data.json();
         setResInfo(json?.data.cards[2]?.card?.card?.info);
         setMenu(json?.data?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
+        setCatagory(json?.data?.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter(c=>c.card?.["card"]?.["@type"]===TYPE_MENU))
     }
-    return [resInfo,menu];
+    return [resInfo,menu,category];
 }
 
 export default useRestaurantsMenu;
