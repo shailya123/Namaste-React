@@ -10,6 +10,7 @@ import Body from './components/Body.jsx'
 import RestaurantMenu from './components/RestaurantMenu.jsx'
 
 const Grocery = lazy(() => import('./components/Grocery'))
+const Cart=lazy(()=>import('./components/Cart'));
 const appRouter = createBrowserRouter([{
   path: '/',
   element: <App />,
@@ -29,6 +30,10 @@ const appRouter = createBrowserRouter([{
     {
       path: '/grocery',
       element: <Suspense fallback={<h1>Loading...</h1>}><Grocery /></Suspense>,
+    },
+    {
+      path: '/cart',
+      element: <Suspense fallback={<h1>Loading...</h1>}><Cart /></Suspense>,
     },
     {
       path: "/restaurants/:resId",

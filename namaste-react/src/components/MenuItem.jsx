@@ -6,7 +6,6 @@ const MenuItem = ({ item,showItems,setShowIndex }) => {
     const handleAccordianClick=()=>
     {
         setShowIndex();
-        console.log("called");
     }
     return (
         <div className='w-[50rem]'>

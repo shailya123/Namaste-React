@@ -70,13 +70,13 @@ const Body = () => {
               Top Restaurant
             </button>
           </div>
-          <input
+          {/* <input
             className="rounded-lg border border-solid border-black p-2"
             type="text"
             placeholder="search..."
             value={loggedInUser}
             onChange={(e) => setUserName(e.target.value)}
-          />
+          /> */}
         </div>
       </div>
       <div className="flex flex-wrap gap-4 p-4">

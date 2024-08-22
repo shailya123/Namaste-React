@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
 import { CDN_URL } from '../utils/contants';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../slices/cartSlice';
 
-const ItemList = ({ item }) => {
-  const [addItem,setAddItem]=useState(null);
+const ItemList = ({ item, showAddButton = true }) => {
+    const dispatch = useDispatch();
+
+    const handleFoodAddItem = (item) => {
+        console.log(item);
+        dispatch(addItem(item));
+    }
+
     return (
         <div>
             {item.map(item =>
@@ -14,9 +22,9 @@ const ItemList = ({ item }) => {
                     </div>
                     <div className="relative">
                         <img src={CDN_URL + item.card.info?.imageId} className="w-28 h-28 rounded-lg" />
-                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 px-2">
-                            <button className="text-green-500 px-2 p-2 bg-white shadow-lg rounded-lg" onClick={()=>setAddItem((addItem)=>addItem+1)}>Add</button>
-                        </div>
+                        {showAddButton && <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 px-2">
+                            <button className="text-green-500 px-2 p-2 bg-white shadow-lg rounded-lg" onClick={() => handleFoodAddItem(item)}>Add</button>
+                        </div>}
                     </div>
                 </div>
             )}

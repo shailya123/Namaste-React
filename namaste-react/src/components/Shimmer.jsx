@@ -9,17 +9,15 @@ const Shimmer = ({ resId = false }) => {
                     <button disabled={true}>Search</button>
                     <button className="filter-btn" disabled={true}>Top Restaurant</button>
                 </div>
-                <div className='flex flex-wrap gap-3'>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
-                    <div className='w-60 h-96 bg-gray-200 m-3'></div>
+                {Array.from({ length: 8 }, (_, index) =>
+                     <div className="p-6 w-64 bg-white shadow-xl h-96 rounded-md item-center justify-center hover:bg-black/10 active:bg-black/10 focus:outline-none focus:ring flex flex-wrap gap-3">
+                    <div className="shimmer h-32 w-32 rounded-md self-center"></div>
+                    <div className="shimmer h-6 w-32 mt-4 rounded-md self-center"></div>
+                    <div className="shimmer h-4 w-52 mt-2 rounded-md self-center"></div>
+                    <div className="shimmer h-4 w-24 mt-2 rounded-md self-center"></div>
+                    <div className="shimmer h-4 w-16 mt-2 rounded-md self-center"></div>
                 </div>
+                )}
             </>
                 :
                 <div className="w-[50rem] rounded shadow-lg flex h-36 justify-between p-2 bg-white animate-pulse">
